@@ -12,11 +12,12 @@ const Slider = () => {
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
   const nextCard = () => {
-    setTimeout(
-      // Ajout du +1 pour vérifier si la prochaine carte à afficher est la dernière carte du slider
-      () => setIndex(index +1 < byDateDesc.length ? index + 1 : 0),
-      5000
-    );
+
+     // Modification de la fonction next card avec ajout du -1 a  byDateDesc.length pour prendre en compte l index qui commence a 0
+  // Ajout d'une verification a la function nextcard
+    if (byDateDesc) {
+      setTimeout(() => setIndex(index +1 < byDateDesc.length ? index + 1 : 0), 5000);
+    }
   };
   useEffect(() => {
     nextCard();
@@ -52,6 +53,7 @@ const Slider = () => {
                   name="radio-button"
                   // index à la place de idx pour associer l'index au radioIdx
                   checked={index === radioIdx}
+                  readOnly
                 />
               ))}
             </div>

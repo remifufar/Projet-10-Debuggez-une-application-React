@@ -45,7 +45,8 @@ describe("When Events is created", () => {
         <Events />
       </DataProvider>
     );
-    await screen.findByText("avril");
+    // ajout findAllByText pour tester plusieurs cartes
+    await screen.findAllByText("avril");
   });
   describe("and an error occured", () => {
     it("an error message is displayed", async () => {
@@ -59,7 +60,7 @@ describe("When Events is created", () => {
     });
   });
   describe("and we select a category", () => {
-    it.only("an filtered list is displayed", async () => {
+    it("an filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
@@ -88,7 +89,7 @@ describe("When Events is created", () => {
   });
 
   describe("and we click on an event", () => {
-    it("the event detail is displayed", async () => {
+    it.only("the event detail is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
